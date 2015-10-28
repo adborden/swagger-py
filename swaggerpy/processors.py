@@ -259,7 +259,7 @@ class WebsocketProcessor(SwaggerProcessor):
 
         if operation['is_websocket']:
             api['has_websocket'] = True
-            if operation['httpMethod'] != 'GET':
+            if operation['method'] != 'GET':
                 raise SwaggerError(
                     "upgrade: websocket is only valid on GET operations",
                     context)

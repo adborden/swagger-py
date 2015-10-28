@@ -53,7 +53,7 @@ class Operation(object):
         :return: Implementation specific response or WebSocket connection
         """
         log.info("%s?%r" % (self.json['nickname'], urllib.urlencode(kwargs)))
-        method = self.json['httpMethod']
+        method = self.json['method']
         uri = self.uri
         params = {}
         data = None
@@ -71,7 +71,7 @@ class Operation(object):
                                       urllib.quote_plus(str(value)))
                 elif param['paramType'] == 'query':
                     params[pname] = value
-                elif param['paramType'] == 'body':
+                elif param['paramType'] == 'body' or param['paramType'] == 'form':
                     if isinstance(value, dict):
                         if data:
                             data.update(value)
